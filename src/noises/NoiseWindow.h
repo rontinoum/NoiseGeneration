@@ -13,6 +13,10 @@ public:
     NoiseWindow(QWidget * parent = 0, Qt::WindowFlags flags = 0);
     ~NoiseWindow();
 
+    const Ui::MainWidget& getMainWidget();
+
+    void init();
+
 private:
     Ui::MainWidget _main_widget;
 };

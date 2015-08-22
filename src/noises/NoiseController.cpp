@@ -12,6 +12,11 @@ NoiseController::~NoiseController()
     clear();
 }
 
+const QStringList& NoiseController::getNames()
+{
+    return _interface_names;
+}
+
 void NoiseController::init()
 {
     _interface_loader.load();

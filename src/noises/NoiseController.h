@@ -22,6 +22,8 @@ public:
     NoiseController();
     ~NoiseController();
 
+    const QStringList& getNames();
+
 public slots:
     void setActive(const QString& name);
     void reload();
