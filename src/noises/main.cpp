@@ -1,10 +1,15 @@
-#include "NoiseController.h"
+#include "noises/NoiseApplication.h"
 
-int main()
+#include <QtCore/QTimer>
+
+int main(int argc, char** argv)
 {
-    noises::NoiseController controller;
+    noises::NoiseApplication* app = new noises::NoiseApplication(argc, argv);
+    QTimer::singleShot(0, app, SLOT(run(void)));
 
-    controller.reload();
+    int result = app->exec();
 
-    return 0;
+    delete app;
+
+    return result;
 }

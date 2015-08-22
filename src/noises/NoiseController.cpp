@@ -4,7 +4,7 @@ NOISES_NAMESPACE_BEGIN
 
 NoiseController::NoiseController() : _active_noise_generator(nullptr)
 {
-    init();
+
 }
 
 NoiseController::~NoiseController()
