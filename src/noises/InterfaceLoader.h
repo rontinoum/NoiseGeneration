@@ -45,6 +45,7 @@ public:
     ~InterfaceLoader();
 
     void load();
+    QStringList getInterfaceNames() const;
     base::NoiseGeneratorInterface* const get(const QString& name) const;
     void unload();
 

@@ -138,6 +138,11 @@ void InterfaceLoader::load()
     detectInterfaceDlls();
 }
 
+QStringList InterfaceLoader::getInterfaceNames() const
+{
+    return _dll_interfaces.keys();
+}
+
 base::NoiseGeneratorInterface* const InterfaceLoader::get(const QString& name) const
 { 
     if(!_dll_interfaces.contains(name))
