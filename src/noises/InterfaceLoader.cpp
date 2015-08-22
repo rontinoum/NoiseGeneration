@@ -154,7 +154,15 @@ base::NoiseGeneratorInterface* const InterfaceLoader::get(const QString& name) c
 void InterfaceLoader::unload()
 {
     for(const auto& dll : _dlls)
+    {
         dll._destroy_interface();
+
+        if(!FreeLibrary(dll._instance))
+        {
+            int ii = 0;
+            ii++;
+        }
+    }
 
     _dlls.clear();
     _dll_interfaces.clear();

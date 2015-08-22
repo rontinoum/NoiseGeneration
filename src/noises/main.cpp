@@ -1,15 +1,10 @@
-#include "noises/InterfaceLoader.h"
+#include "NoiseController.h"
 
 int main()
 {
-    noises::InterfaceLoader loader;
-    loader.load();
+    noises::NoiseController controller;
 
-    base::NoiseGeneratorInterface* const noise_generator_simple = loader.get("Simple");
-
-    noise_generator_simple->getNoise(1.0f);
-
-    loader.unload();
+    controller.reload();
 
     return 0;
 }
