@@ -154,7 +154,7 @@ FUNCTION(ADDFOLDER FOLDERFILES)
     # process ic files
     GATHERUIFILES(UIC_FILES UIFILES ${UI_FILES})
     SOURCE_GROUP(${QTUICGROUPNAME} FILES ${UIC_FILES})
-
+    
     # only for executables we need resources
     IF(${ADDFOLDER_ISEXE})
         # for win add rc file
@@ -197,6 +197,7 @@ FUNCTION(ADDFOLDER FOLDERFILES)
         )
         
         TARGET_INCLUDE_DIRECTORIES(${ADDFOLDER_NAME} PUBLIC ${PrjSrcDir})
+        TARGET_INCLUDE_DIRECTORIES(${ADDFOLDER_NAME} PUBLIC ${PrjUicDir})
         
     ELSE(${ADDFOLDER_ISEXE})
         IF(${ADDFOLDER_DYNAMIC})
@@ -212,6 +213,7 @@ FUNCTION(ADDFOLDER FOLDERFILES)
             )
             
             TARGET_INCLUDE_DIRECTORIES(${ADDFOLDER_NAME} PUBLIC ${PrjSrcDir})
+            TARGET_INCLUDE_DIRECTORIES(${ADDFOLDER_NAME} PUBLIC ${PrjUicDir})
         ENDIF(${ADDFOLDER_DYNAMIC})
         
         SET(TMPFILES)
