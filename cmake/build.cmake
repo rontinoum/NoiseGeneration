@@ -154,7 +154,7 @@ FUNCTION(ADDFOLDER FOLDERFILES)
     # process ic files
     GATHERUIFILES(UIC_FILES UIFILES ${UI_FILES})
     SOURCE_GROUP(${QTUICGROUPNAME} FILES ${UIC_FILES})
-    
+
     # only for executables we need resources
     IF(${ADDFOLDER_ISEXE})
         # for win add rc file
