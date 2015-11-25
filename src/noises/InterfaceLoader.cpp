@@ -18,8 +18,6 @@ InterfaceLoader::~InterfaceLoader()
 
 void InterfaceLoader::loadDll(const QString& dll)
 {
-    qDebug() << "Load Dll: " << dll;
-
     // load dll
     HINSTANCE dll_instance = LoadLibrary(dll.toUtf8().data());
 
@@ -46,8 +44,6 @@ void InterfaceLoader::loadDll(const QString& dll)
     {
         bool freed = FreeLibrary(dll_instance);
 
-        qDebug() << " -> Can't resolve external functions";
-
         return;
     }
 
@@ -62,7 +58,7 @@ void InterfaceLoader::loadDll(const QString& dll)
     {
         bool freed = FreeLibrary(dll_instance);
 
-        qDebug() << " -> Missing Name";
+        qDebug() << dll << " -> Missing Name";
 
         return;
     }
@@ -75,14 +71,14 @@ void InterfaceLoader::loadDll(const QString& dll)
     {
         bool freed = FreeLibrary(dll_instance);
 
-        qDebug() << " -> Dll with same name detected";
+        qDebug() << dll << " -> Dll with same name detected";
 
         return;
     }
 
     _dlls.insert(name, dll_interface);
 
-    qDebug() << " -> Loaded";
+    qDebug() << " -> Found: " << name;
 }
 
 void InterfaceLoader::getInterfaces()
@@ -99,7 +95,7 @@ void InterfaceLoader::getInterfaces()
         {
             bool freed = FreeLibrary(iter.value()._instance);
 
-            qDebug() << " -> Can't allocate Interface";
+            qDebug() << iter.key() << " -> Can't allocate Interface";
 
             _dlls.erase(iter);
 
@@ -123,6 +119,8 @@ void InterfaceLoader::getInterfaces()
 
 void InterfaceLoader::detectInterfaceDlls()
 {
+    qDebug() << "Refresh interfaces:";
+
     QDir application_dir = QDir::current();
     QStringList dlls = application_dir.entryList(QStringList() << "*.dll", QDir::Files | QDir::NoSymLinks);
 
@@ -130,6 +128,8 @@ void InterfaceLoader::detectInterfaceDlls()
         loadDll(dll);
 
     getInterfaces();
+
+    qDebug() << "";
 }
 
 void InterfaceLoader::load()
