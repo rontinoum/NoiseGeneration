@@ -66,7 +66,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QWidget" name="_wdg_one_d" native="true">
+          <widget class="noises::Noise1DWidget" name="_wdg_one_d" native="true">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
              <horstretch>0</horstretch>
@@ -103,7 +103,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QWidget" name="_wdg_two_d" native="true">
+          <widget class="noises::Noise2DWidget" name="_wdg_two_d" native="true">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -128,7 +128,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QOpenGLWidget" name="_wdg_three_d" native="true">
+          <widget class="noises::Noise3DWidget" name="_wdg_three_d" native="true">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -225,9 +225,22 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QOpenGLWidget</class>
+   <class>noises::Noise1DWidget</class>
    <extends>QWidget</extends>
-   <header>qopenglwidget.h</header>
+   <header>noises/Noise1DWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>noises::Noise2DWidget</class>
+   <extends>QWidget</extends>
+   <header>noises/Noise2DWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>noises::Noise3DWidget</class>
+   <extends>QWidget</extends>
+   <header>noises/noise3DWidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
