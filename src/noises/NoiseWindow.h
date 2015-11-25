@@ -9,13 +9,19 @@ NOISES_NAMESPACE_BEGIN
 
 class NoiseWindow : public QMainWindow
 {
+    Q_OBJECT
+
 public:
     NoiseWindow(QWidget * parent = 0, Qt::WindowFlags flags = 0);
     ~NoiseWindow();
 
-    const Ui::MainWidget& getMainWidget();
-
     void init();
+
+    void setNoiseMethods(const QStringList& noises);
+
+signals:
+    void refreshNoise(const QString& noise_name);
+    void reload();
 
 private:
     Ui::MainWidget _main_widget;

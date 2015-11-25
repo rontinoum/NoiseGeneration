@@ -18,11 +18,22 @@ void NoiseWindow::init()
     _main_widget.setupUi(central_widget);
 
     setCentralWidget(central_widget);
+
+    // connect widgets
+    connect(_main_widget._bt_reload_methods, &QPushButton::pressed, this, &NoiseWindow::reload);
+    connect(_main_widget._cb_methods, SIGNAL(activated(const QString&)), this, SIGNAL(refreshNoise(const QString&)));
 }
 
-const Ui::MainWidget& NoiseWindow::getMainWidget()
+void NoiseWindow::setNoiseMethods(const QStringList& noises)
 {
-    return _main_widget;
+    _main_widget._cb_methods->clear();
+    
+    for(const auto& name : noises)
+        _main_widget._cb_methods->addItem(name);
+
+    // refresh noise
+    if(_main_widget._cb_methods->count() != 0)
+        emit refreshNoise(_main_widget._cb_methods->itemText(0));
 }
 
 NOISES_NAMESPACE_END

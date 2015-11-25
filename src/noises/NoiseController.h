@@ -14,28 +14,32 @@ BASE_NAMESPACE_END
 
 NOISES_NAMESPACE_BEGIN
 
-class NoiseController : QObject
+class NoiseWindow;
+
+class NoiseController : public QObject
 {
     Q_OBJECT;
 
 public:
-    NoiseController();
+    NoiseController(NoiseWindow* const noise_window);
     ~NoiseController();
 
-    const QStringList& getNames();
+    void init();
 
 public slots:
-    void setActive(const QString& name);
-    void reload();
+    void onReload();
+    void onRefreshNoise(const QString& noise_name);
 
 private:
-    void init();
-    void clear();
+    void initInterfaces();
+    void clearInterfaces();
 
 private:
     InterfaceLoader _interface_loader;
     base::NoiseGeneratorInterface* _active_noise_generator;
     QStringList _interface_names;
+
+    NoiseWindow* const _noise_window;
 };
 
 NOISES_NAMESPACE_END
