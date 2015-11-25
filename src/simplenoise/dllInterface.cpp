@@ -7,7 +7,7 @@ extern "C"
 
     base::NoiseGeneratorInterface* interface_ptr = nullptr;
 
-    D_EXPORT base::NoiseGeneratorInterface* getInterface()
+    SIMPLENOISE_API base::NoiseGeneratorInterface* getInterface()
     {
         if(interface_ptr == nullptr)
             interface_ptr = (base::NoiseGeneratorInterface*)new simplenoise::NoiseGeneratorSimple();
@@ -15,18 +15,18 @@ extern "C"
         return interface_ptr;
     }
 
-    D_EXPORT void destroyInterface()
+    SIMPLENOISE_API void destroyInterface()
     {
         if(interface_ptr != nullptr)
             delete interface_ptr;
     }
 
-    D_EXPORT const size_t& getNameLength()
+    SIMPLENOISE_API const size_t& getNameLength()
     {
         return dllNameLength;
     }
 
-    D_EXPORT char* const getName()
+    SIMPLENOISE_API char* const getName()
     {
         return dllName;
     }

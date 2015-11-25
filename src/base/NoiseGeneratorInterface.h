@@ -1,11 +1,10 @@
 #pragma once
 
 #include "base/module_config.h"
-#include "project_config.h"
 
 BASE_NAMESPACE_BEGIN
 
-class D_EXPORT NoiseGeneratorInterface
+class BASE_API NoiseGeneratorInterface
 {
 public:
     NoiseGeneratorInterface();
